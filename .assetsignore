@@ -1,0 +1,19 @@
+# wrangler files
+.wrangler
+.dev.vars*
+.env*
+!.env.example
+/_worker.js
+/_routes.json
+/functions
+node_modules
+.git
+.DS_Store
+.npmrc
+.cloudflare
+/cloudflare.config.ts
+/wrangler.config.ts
+/package.json
+/package-lock.json
+/README.md
+/tests

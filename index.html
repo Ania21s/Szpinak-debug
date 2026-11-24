@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f8f2" />
+    <meta
+      name="description"
+      content="Odkrywaj szpinak, podejmuj codzienne wyzwania i zdobywaj punkty."
+    />
+    <title>Zielnik — codzienna dawka szpinaku</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="beta-banner" aria-label="Informacja o wersji beta">
+        <span class="beta-banner-label">WERSJA BETA</span>
+        <span>Testujemy aplikację lokalnie — mogą pojawić się zmiany.</span>
+      </aside>
+      <header class="topbar">
+        <a class="brand" href="#home" aria-label="Zielnik — strona główna">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M25.9 5.2C16 5.1 8.3 7 6.1 13.5c-1.6 4.7 2 8.4 6.5 7.1 6.8-2 10.1-9.2 13.3-15.4Z" fill="currentColor" />
+              <path d="M7 27c3.4-7.5 8.2-12.1 14.8-16.5" stroke="#F7F8F2" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span>zielnik</span>
+        </a>
+        <button class="points-pill" type="button" data-scroll="points" aria-label="Przejdź do Twoich punktów">
+          <span class="points-star" aria-hidden="true">✳</span>
+          <span><strong id="header-points">120</strong> pkt</span>
+        </button>
+      </header>
+
+      <main id="home">
+        <section class="welcome" aria-labelledby="welcome-title">
+          <div>
+            <p class="eyebrow"><span class="sun-icon" aria-hidden="true">✳</span> <span id="today-label"></span></p>
+            <h1 id="welcome-title">Cześć! <span class="wave" aria-hidden="true">✦</span><br />Dziś robimy coś<br class="mobile-break" /> <span class="title-accent">dobrego.</span></h1>
+            <p class="welcome-copy">Mały zielony krok? To prostsze, niż myślisz.</p>
+          </div>
+          <div class="day-stamp" aria-label="Jeden zielony krok na dziś">
+            <span>DZISIAJ</span>
+            <strong>1</strong>
+            <span>zielony krok</span>
+          </div>
+        </section>
+
+        <section class="challenge-card" id="challenges" aria-labelledby="challenge-title">
+          <div class="challenge-art" aria-hidden="true">
+            <svg viewBox="0 0 220 220" fill="none">
+              <circle cx="119" cy="111" r="95" fill="#D9F16A" fill-opacity=".12" />
+              <circle cx="119" cy="111" r="73" fill="#D9F16A" fill-opacity=".12" />
+              <path d="M147.8 34.8c-27.5.2-56.2 7.5-62.4 27.1-4.4 13.7 6.4 24.7 19.5 20.7 19.8-6 32.5-27.9 42.9-47.8Z" fill="#B7DF54" />
+              <path d="M86 89c13.5-20.4 30.9-34.6 54.2-48.5" stroke="#294D2C" stroke-width="3" stroke-linecap="round" />
+              <path d="M181.5 86c-23.3-2.7-48.1.3-53.6 17-3.8 11.7 5.5 21.1 16.8 17.7 17-5.2 27.9-23.9 36.8-34.7Z" fill="#E3F29A" />
+              <path d="M130 112c11.4-13.9 25.8-22.8 45.4-30.8" stroke="#294D2C" stroke-width="2.6" stroke-linecap="round" />
+              <path d="M79.7 104.4c-20.6 11.9-38.9 29.1-33.8 46 3.6 11.8 16.6 14.8 23.8 5 10.8-14.8 9.5-36.5 10-51Z" fill="#E3F29A" />
+              <path d="M50 153c9.7-15.1 23.1-27.9 42.4-39.9" stroke="#294D2C" stroke-width="2.6" stroke-linecap="round" />
+              <path d="M105 78c.5-9 4.1-17.5 10-25" stroke="#F7F8F2" stroke-opacity=".7" stroke-width="2" stroke-linecap="round" />
+              <circle cx="43" cy="71" r="4" fill="#D9F16A" />
+              <path d="M177 145v9m-4.5-4.5h9" stroke="#D9F16A" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="challenge-content">
+            <div class="challenge-meta">
+              <span class="challenge-label"><span aria-hidden="true">✳</span> WYZWANIE DNIA</span>
+              <span class="time-label"><span aria-hidden="true">◷</span> 2 min</span>
+            </div>
+            <h2 id="challenge-title">Zielony<br />akcent na talerzu</h2>
+            <p>Dorzuć garść szpinaku do dzisiejszego posiłku. Kanapka, makaron — Ty wybierasz!</p>
+            <div class="challenge-bottom">
+              <button class="challenge-button" id="challenge-button" type="button">
+                Podejmij wyzwanie <span aria-hidden="true">↗</span>
+              </button>
+              <span class="reward"><span aria-hidden="true">✳</span> +20 pkt</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="progress-card" id="points" aria-labelledby="progress-title">
+          <div class="progress-copy">
+            <span class="progress-icon" aria-hidden="true">🌱</span>
+            <div>
+              <p class="section-kicker">TWÓJ ZIELONY START</p>
+              <h2 id="progress-title"><span id="total-points">120</span> punktów</h2>
+            </div>
+          </div>
+          <div class="progress-side">
+            <span class="level-tag">POZIOM 1</span>
+            <span class="progress-caption">Jeszcze 80 pkt do poziomu 2</span>
+            <div class="progress-track" role="progressbar" aria-label="Postęp do poziomu 2" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+              <span></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="recipe-section" id="recipes" aria-labelledby="recipe-heading">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">COŚ PYSZNEGO NA DZIŚ</p>
+              <h2 id="recipe-heading">Na dobry początek</h2>
+            </div>
+            <button class="text-link" type="button" data-open-recipe>Zobacz przepis <span aria-hidden="true">↗</span></button>
+          </div>
+          <article class="recipe-card">
+            <div class="recipe-visual" aria-hidden="true">
+              <span class="recipe-sparkle sparkle-one">✳</span>
+              <span class="recipe-sparkle sparkle-two">✦</span>
+              <svg viewBox="0 0 200 150" fill="none">
+                <ellipse cx="101" cy="122" rx="72" ry="15" fill="#34572D" fill-opacity=".12" />
+                <ellipse cx="100" cy="88" rx="74" ry="45" fill="#FFFDF4" />
+                <ellipse cx="100" cy="84" rx="63" ry="36" fill="#F4F0D8" />
+                <path d="M49 85c17-17 33-15 44-2-12 21-31 25-44 2Z" fill="#498345" />
+                <path d="M50 85c13-2 25-1 37-1" stroke="#DCEB9C" stroke-width="2" stroke-linecap="round" />
+                <path d="M89 67c17-18 33-15 41-1-11 20-30 23-41 1Z" fill="#65964E" />
+                <path d="M92 67c12 1 23 2 33 0" stroke="#DCEB9C" stroke-width="2" stroke-linecap="round" />
+                <path d="M112 92c15-16 29-11 34 1-10 15-24 17-34-1Z" fill="#4B8542" />
+                <path d="M115 92c10 2 19 3 28 2" stroke="#DCEB9C" stroke-width="2" stroke-linecap="round" />
+                <circle cx="78" cy="92" r="6" fill="#E9AE63" />
+                <circle cx="101" cy="99" r="5" fill="#DF9864" />
+                <circle cx="130" cy="79" r="5" fill="#E9AE63" />
+                <circle cx="67" cy="75" r="3" fill="#E3C974" />
+                <path d="M31 85c1 24 31 44 69 44s68-20 69-44" stroke="#D8D2BB" stroke-width="3" />
+              </svg>
+            </div>
+            <div class="recipe-info">
+              <span class="recipe-tag">SZYBKO I PROSTO</span>
+              <h3>Zielona miska mocy</h3>
+              <p>Szpinak, jajko i kilka pysznych dodatków.</p>
+              <div class="recipe-details">
+                <span><span aria-hidden="true">◷</span> 15 min</span>
+                <span><span aria-hidden="true">▰</span> Łatwe</span>
+                <span class="recipe-points">+10 pkt za ugotowanie</span>
+              </div>
+            </div>
+            <button class="recipe-open" type="button" data-open-recipe aria-label="Otwórz przepis na Zieloną miskę mocy">↗</button>
+          </article>
+          <div class="assistant-promo">
+            <div>
+              <span class="assistant-promo-kicker">MASZ PYTANIE?</span>
+              <p>Zapytaj o przepis, zamienniki lub pomysł na szpinak.</p>
+            </div>
+            <button class="assistant-open" id="assistant-open" type="button">Zapytaj asystenta <span aria-hidden="true">↗</span></button>
+          </div>
+        </section>
+
+        <footer class="sponsor">
+          <span class="sponsor-leaf" aria-hidden="true">✳</span>
+          <span>Rośniemy w siłę razem z <strong>Polskim Związkiem Producentów Szpinaku</strong></span>
+        </footer>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Nawigacja główna">
+        <button class="nav-item active" type="button" data-scroll="challenges" aria-current="page">
+          <span class="nav-icon" aria-hidden="true">✳</span><span>Wyzwania</span>
+        </button>
+        <button class="nav-item" type="button" data-scroll="recipes">
+          <span class="nav-icon" aria-hidden="true">♧</span><span>Przepisy</span>
+        </button>
+        <button class="nav-item" type="button" data-scroll="points">
+          <span class="nav-icon" aria-hidden="true">◉</span><span>Punkty</span>
+        </button>
+      </nav>
+    </div>
+
+    <dialog class="recipe-dialog" id="recipe-dialog" aria-labelledby="dialog-title">
+      <form method="dialog">
+        <button class="dialog-close" aria-label="Zamknij przepis">×</button>
+      </form>
+      <p class="section-kicker">SZYBKO I PROSTO · 15 MIN</p>
+      <h2 id="dialog-title">Zielona miska mocy</h2>
+      <p>Pożywny, zielony posiłek, który zrobisz w kwadrans.</p>
+      <h3>Potrzebujesz</h3>
+      <ul>
+        <li>garść świeżego szpinaku</li>
+        <li>2 jajka i kromkę ulubionego pieczywa</li>
+        <li>pół awokado, oliwę i szczyptę soli</li>
+      </ul>
+      <h3>Jak zrobić</h3>
+      <p>Usmaż jajka, podpiecz pieczywo, a na koniec ułóż wszystko w misce ze szpinakiem i awokado. Skrop oliwą. Smacznego!</p>
+    </dialog>
+    <dialog class="assistant-dialog" id="assistant-dialog" aria-labelledby="assistant-title">
+      <form method="dialog" class="assistant-dialog-close-form">
+        <button class="dialog-close" aria-label="Zamknij asystenta">×</button>
+      </form>
+      <p class="section-kicker">ZIELNIK · ASYSTENT AI</p>
+      <h2 id="assistant-title">Co dziś ugotujemy?</h2>
+      <p class="assistant-disclaimer">Pomysły na szpinak, przepisy i zamienniki. Odpowiedzi generuje AI.</p>
+      <div class="assistant-messages" id="assistant-messages" role="log" aria-label="Rozmowa z asystentem" aria-live="polite">
+        <p class="assistant-message assistant-reply">Cześć! Napisz, na co masz ochotę albo jakie składniki masz pod ręką.</p>
+      </div>
+      <form class="assistant-form" id="assistant-form">
+        <label class="visually-hidden" for="assistant-input">Twoja wiadomość</label>
+        <input id="assistant-input" name="message" maxlength="1200" autocomplete="off" placeholder="Np. szybki obiad ze szpinakiem…" required />
+        <button type="submit" id="assistant-send">Wyślij</button>
+      </form>
+      <p class="assistant-status" id="assistant-status" role="status" aria-live="polite"></p>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
